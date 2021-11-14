@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\bookController;
+use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,8 @@ Route::get('/', function () {
 // Route::middleware(['auth'])->group(function () {
 //     Route::resource('/book', bookController::class);
 // });
-Route::resource('/book', bookController::class);
+Route::resource('/admin/books', bookController::class);
+Route::get('/books', [UserBookController::class, 'index']);
 
 Route::resource('/user', userController::class);
 

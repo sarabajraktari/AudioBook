@@ -24,11 +24,12 @@
 
                   @if((Auth::user() && Auth::user()->role==2))
                   <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">My Books</a>
+                  <a href="/books" class="py-5 px-3 text-gray-700 hover:text-gray-900">Books</a>
                   @endif
 
                   @if((Auth::user() &&Auth::user()->role==1))
                   <a href="/user" class="py-5 px-3 text-gray-700 hover:text-gray-900">Users</a>
-                  <a href="/book" class="py-5 px-3 text-gray-700 hover:text-gray-900">Books</a>
+                  <a href="/admin/books" class="py-5 px-3 text-gray-700 hover:text-gray-900">Books</a>
                   @endif
               </div>
               @guest

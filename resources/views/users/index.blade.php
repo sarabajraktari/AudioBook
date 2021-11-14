@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.app')
 
 @section('content')
 <div class="m-auto w-4/5 py-10">
@@ -10,8 +10,8 @@
         <div class="flex  justify-between pt-10 pb-10 sm:flex flex-wrap ">
            
            
-                <form action="/searchUser" method="GET">
-                    @csrf
+                <form action="/user" method="GET">
+                    
 
                     <input
                         type="text"

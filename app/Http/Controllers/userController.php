@@ -16,11 +16,13 @@ class userController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $users = User::paginate(5);
+        $search_text = isset($_GET['search']) ? $_GET['search'] : null;
+        if ($search_text)
+            $users = User::where('name', 'LIKE', '%' . $search_text . '%')->paginate(5);
+        else
+            $users = User::paginate(5);
         return view('users.index', [
             'users' => $users,
-
 
         ]);
     }

@@ -11,7 +11,7 @@
 </div>
 
 <div class="flex justify-center pt-20">
-    <form action="/book" method="POST" enctype="multipart/form-data">
+    <form action="/admin/books" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="block">
             <input 
@@ -41,6 +41,12 @@
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="pages"
                 placeholder="Pages...">
+
+                <input 
+                type="text"
+                class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
+                name="price"
+                placeholder="Price...">
 
                 <button type="submit" class="bg-green-500 block shadow-5xl mb-10 p-2 w-80 uppercase font-bold">
                     Submit

@@ -15,14 +15,14 @@
        <div class="flex  justify-between pt-5 pb-10 sm:flex flex-wrap  ">
            <div class=" py-5">
         <a 
-             href="book/create" 
+             href="books/create" 
             class="border-b-2 pb-2 text-lg font-bold normal-case border-dotted italic text-green-300 ">
             Add  a new book &rarr;
         </a>
            </div>
        <div class=" py-3">
-            <form action="/search" method="GET" class="">
-                @csrf
+            <form action="/admin/books" method="GET" class="">
+                
         
                 <input
                     type="text"
@@ -42,7 +42,7 @@
                
   
     <div class=" flex   max-w-md  bg-gray-100 rounded-md shadow-md overflow-hidden mb-7 mt-5  md:max-w-5xl ">
-                <a href="/book/{{ $book->isbn}}" class="no-underline">
+                <a href="/admin/books/{{ $book->isbn}}" class="no-underline">
             <div class="md:flex  ">
                 <div class="md:flex-shrink-0   ">
                     <img class=" h-48 w-full object-cover md:h-full md:w-48" src="{{ asset('images/' . $book->image_path) }}" >
@@ -68,13 +68,13 @@
             <div class="">
             <a 
              class="border-b-2   border-dotted italic text-green-500 mx-auto"
-             href="book/{{ $book->isbn }}/edit">
+             href="books/{{ $book->isbn }}/edit">
                 Edit &rarr;
             </a>
             
             </div>
             <div >
-                <form action="/book/{{ $book ->isbn }}" class="pt-3" method="POST">
+                <form action="/admin/books/{{ $book ->isbn }}" class="pt-3" method="POST">
                     @csrf
                     @method('delete')
                     <button

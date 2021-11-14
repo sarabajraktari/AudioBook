@@ -20,8 +20,12 @@ class bookController extends Controller
      */
     public function index()
     {
-        $books = book::all();
-        $books = book::paginate(5);
+
+        $search_text = isset($_GET['search']) ? $_GET['search'] : null;
+        if ($search_text)
+            $books = book::where('title', 'LIKE', '%' . $search_text . '%')->paginate(5);
+        else
+            $books = book::paginate(5);
         return view('books.index', [
             'books' => $books,
 
@@ -54,7 +58,8 @@ class bookController extends Controller
             'author' => 'required|string',
             'pages' => 'required|integer|min:0|max:2000',
             'description' => 'required|string',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048',
+
         ]);
 
         $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
@@ -68,11 +73,12 @@ class bookController extends Controller
             'description' => $request->input('description'),
             'pages' => $request->input('pages'),
             'image_path' => $newImageName,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'price' => $request->input('price'),
 
         ]);
 
-        return redirect('/book'); //kur klikohet buttoni me orientu ne faqen book
+        return redirect('/admin/books'); //kur klikohet buttoni me orientu ne faqen book
     }
 
     /**
@@ -131,7 +137,7 @@ class bookController extends Controller
 
             ]);
 
-        return redirect('/book');
+        return redirect('/admin/books');
     }
 
     /**
@@ -145,14 +151,14 @@ class bookController extends Controller
 
         $book->delete();
 
-        return redirect('/book');
+        return redirect('/admin/books');
     }
 
 
-    public function search()
-    {
-        $search_text = $_GET['search'];
-        $books = book::where('title', 'LIKE', '%' . $search_text . '%')->get();
-        return view('books.search', compact('books'));
-    }
+    //     public function search()
+    //     {
+    //         $search_text = $_GET['search'];
+    //         $books = book::where('title', 'LIKE', '%' . $search_text . '%')->get();
+    //         return view('books.search', compact('books'));
+    //     }
 }
