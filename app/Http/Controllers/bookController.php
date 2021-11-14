@@ -76,6 +76,7 @@ class bookController extends Controller
             'user_id' => auth()->user()->id,
             'price' => $request->input('price'),
 
+
         ]);
 
         return redirect('/admin/books'); //kur klikohet buttoni me orientu ne faqen book
