@@ -30,6 +30,7 @@ Route::get('/', function () {
 Route::resource('/admin/books', bookController::class);
 Route::get('/books', [UserBookController::class, 'index']);
 
+
 Route::resource('/user', userController::class);
 
 Auth::routes();
@@ -37,12 +38,6 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-//Search for books
-Route::get('/search', [bookController::class, 'search']);
-
-//Search for users
-Route::get('/searchUser', [userController::class, 'search1']);
 
 Auth::routes();
 

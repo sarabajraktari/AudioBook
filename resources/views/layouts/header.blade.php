@@ -41,6 +41,7 @@
                     @endif
                @else
                     <p class=" hidden md:flex py-6 px-3 text-gray-700 hover:text-gray-900">{{ Auth::user()->name }}</p>
+                    
                      <a href="{{ route('logout') }}"
                        class="hidden md:flex py-6 px-3 text-gray-700 hover:text-gray-900"
                        onclick="event.preventDefault();

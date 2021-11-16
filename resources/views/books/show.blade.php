@@ -24,33 +24,36 @@
                 </p>
             </div>
         </div>
-            <div class="flex justify-center  ">
-                <table class="table-fixed border-collapse w-1/2 ">
-                    <tr class="bg-green-100  ">
-                        <th class="w-1/4 border-2 border-gray-500">
+            <div class="flex justify-center  mt-10 ">
+                <table class="min-w-20 divide-y divide-gray-200 ">
+                    <tr class="bg-green-300  ">
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                                 Chapters
                         </th>
-                        <th class="w-1/4 border-2 border-gray-500">
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Duration
                         </th>
-                        <th class="w-1/4 border-2 border-gray-500">
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Voice
                         </th>
-                        
+                  
                     </tr>
 
                     @forelse ($book->bookChapter as $bookChapter)
+                    <tbody class="bg-white divide-y divide-gray-200">
                         <tr>
-                            <td class="border-2 border-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                     {{ $bookChapter->chapter_name }}
                             </td>
                             
                         </tr>
+                   
                     @empty
-                            <td class="border-2 border-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             <p>No book chapters found!</p>
                             <td>
-                        @endforelse
+                    @endforelse
+                    </tbody>
                     </table>
                 </div>  
                     {{-- <p class="text-left">

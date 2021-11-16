@@ -10,9 +10,12 @@ class BookController extends Controller
 {
     public function index()
     {
-        // $search =  $_GET['search'];
-        // return $search;
-        $books = book::paginate(8);
+
+        $search_text = isset($_GET['search']) ? $_GET['search'] : null;
+        if ($search_text)
+            $books = book::where('title', 'LIKE', '%' . $search_text . '%')->paginate(8);
+        else
+            $books = book::paginate(8);
 
         return view('books.indexUser', [
             'books' => $books,
