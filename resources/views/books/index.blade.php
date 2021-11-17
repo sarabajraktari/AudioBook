@@ -45,7 +45,7 @@
                 <a href="/admin/books/{{ $book->isbn}}" class="no-underline">
             <div class="md:flex  ">
                 <div class="md:flex-shrink-0   ">
-                    <img class=" h-48 w-full object-cover md:h-full md:w-48" src="{{ asset('images/' . $book->image_path) }}" >
+                    <img class=" h-1/2 w-full object-contain md:h-full md:w-48" src="{{ asset('images/' . $book->image_path) }}" >
                 </div> 
                 <div class="p-8 flex-shrink w-64 h-30  ">
                     <div class="uuppercase tracking-wide text-m text-indigo-500 font-semibold">

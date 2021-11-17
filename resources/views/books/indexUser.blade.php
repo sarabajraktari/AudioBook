@@ -71,6 +71,11 @@
    <div class="d-flex justify-content-center">
     {!! $books->links() !!}
     </div>
-
- 
+{{-- <div class="flex">
+ <div id="starRating">
+ </div>
+</div>
+ <script src="{{ mix('js/app.js') }}">
+   </script> --}}
   @endsection
+

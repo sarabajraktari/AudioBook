@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="m-auto w-full py-0">
-        <div class=" sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-            <div class="sm:w-full h-full ">
+    <div class="m-auto w-full ">
+        <div class="  mt-5  sm:flex    mx-auto  border-b border-gray-200 w-4/5">
+         <div class="mx-auto p-5 w-1/2">
                 <img 
                     src="{{ asset('images/' . $book->image_path) }}"
-                    class=" ml-1/6 h-full w-1/2     rounded-xl "
-                    alt="">
-            </div>
-            <div class="p-8 flex-shrink w-64 h-30  ml-10" >
+                    class="w-full h-full object-center object-contain lg:w-full lg:h-full  "
+                       alt="">
+         </div>
+            <div class="p-5   " > 
                 <h1 class=" text-gray-700 font-bold text-2xl  ">
                 TITLE: {{ $book->title }}
                 </h1>
@@ -19,12 +19,13 @@
                 <p class="text-xl text-gray-700 pt-8 pb- leading-8 font-light">
                         Description: {{ $book->description }}
                 </p>
-                <p class="text-lg italic text-gray-700 py-15">
+                <p class="text-lg italic text-gray-700 py-15 pt-10">
                     Pages: {{ $book->pages }}
                 </p>
+            
             </div>
         </div>
-            <div class="flex justify-center  mt-10 ">
+            <div class="grid justify-center  mt-5">
                 <table class="min-w-20 divide-y divide-gray-200 ">
                     <tr class="bg-green-300  ">
                         <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
@@ -55,7 +56,7 @@
                     @endforelse
                     </tbody>
                     </table>
-                </div>  
+            </div>  
                     {{-- <p class="text-left">
                         Product types:
                         @forelse ( $car->products as $product)
@@ -70,6 +71,7 @@
                     {{-- <hr class="mt-4 mb-8" > --}}
                 
                 
-             
     </div>
+    
+        
 @endsection

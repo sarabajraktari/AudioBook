@@ -11,7 +11,7 @@
 </div>
 
 <div class="flex justify-center pt-4">
-    <form action="/book/{{ $book->isbn  }}" method="POST">
+    <form action="/admin/books/{{ $book->isbn  }}" method="POST">
         @csrf
         @method('PUT')
         <div class="block">
