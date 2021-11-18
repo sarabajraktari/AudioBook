@@ -20,34 +20,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="header-1 flex flex-col bg-gray-200 min-h-screen">
-<div class="flex content-center p-4 lg:py-16 lg:px-8 text-center max-w-xl mx-auto my-auto">
-    <div class="px-2">
-      <span class="fas fa-bookmark w-12 h-12 lg:w-16 lg:h-16 bg-purple-700 rounded-full text-center text-white text-lg lg:text-2xl pt-4 lg:pt-5"></span>
-      <h1 class="text-center text-4xl lg:text-5xl my-3 lg:mt-4">Hello, world!</h1>
-      <p class="text-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem dolore dolorem ea inventore molestiae nemo neque non, quidem recusandae soluta tenetur! Aut eaque, placeat!</p>
-      <button class="bg-purple-700 hover:bg-purple-800 text-white py-2 px-4 lg:py-3 lg:px-6 rounded mt-6 lg:mt-12">Learn more</button>
+
+
+<div class="hero min-h-screen" style="background-image: url(&quot;https://picsum.photos/id/1005/1600/1400&quot;);">
+  <div class="hero-overlay bg-opacity-60"></div> 
+  <div class="text-center hero-content text-neutral-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">
+            Hello there
+          </h1> 
+      <p class="mb-5">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+          </p> 
+    <a href="/register">  <button class="btn btn-primary" >Sign up now</button></a>
     </div>
   </div>
 </div>
 
-@endsection
-{{-- 
- <div class="flex flex-col">
-    @if(Route::has('login'))
-        <div class="absolute top-0 right-0 mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6">
-            @auth
-                <a href="{{ url('/home') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase">{{ __('Home') }}</a>
-            @else
-                <a href="{{ route('login') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase">{{ __('Login') }}</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase">{{ __('Register') }}</a>
-                @endif
-            @endauth
-        </div>
-    @endif  --}}
 
-    
+@endsection
+
+
 
 </body>
 </html>

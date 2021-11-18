@@ -16,13 +16,43 @@
                 <span class="uppercase text-blue-500 font-bold text-xs italic">
                         Author:{{ $book->author }}
                 </span>
-                <p class="text-xl text-gray-700 pt-8 pb- leading-8 font-light">
+                 <p class="text-xl text-gray-700 pt-8 pb- leading-8 font-light">
                         Description: {{ $book->description }}
-                </p>
+                </p> 
+                {{-- <p>
+                    {!! str_limit(($book->description), 150, '') !!}
+                    @if (strlen($book->description) > 250)
+                        <span id="dots">...</span>
+                        <span id="more" style="display:none;">{{ substr( $book->description,200) }}</span>
+                        
+                    @endif
+        
+                    
+                    
+                    </p>
+                    <button class="btn btn-primary btn-small" onclick="myFunction()" id="myBtn">Read more</button> --}}
+        
+                
                 <p class="text-lg italic text-gray-700 py-15 pt-10">
                     Pages: {{ $book->pages }}
                 </p>
-            
+                <ul class="flex justify-right">
+                    <li>
+                      <i class="fas fa-star fa-sm text-yellow-500 mr-1"></i>
+                    </li>
+                    <li>
+                      <i class="fas fa-star fa-sm text-yellow-500 mr-1"></i>
+                    </li>
+                    <li>
+                      <i class="fas fa-star fa-sm text-yellow-500 mr-1"></i>
+                    </li>
+                    <li>
+                      <i class="far fa-star fa-sm text-yellow-500 mr-1"></i>
+                    </li>
+                    <li>
+                      <i class="far fa-star fa-sm text-yellow-500 mr-1"></i>
+                    </li>
+                  </ul>
             </div>
         </div>
             <div class="grid justify-center  mt-5">
@@ -72,6 +102,22 @@
                 
                 
     </div>
-    
+{{--     
+    <script type="text/javascript">
+        function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
         
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "none";
+            }
+        }
+        </script> --}}
 @endsection

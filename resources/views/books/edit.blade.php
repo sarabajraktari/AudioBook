@@ -31,6 +31,7 @@
                 type="text"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="description"
+                rows="3"
                 value="{{ $book->description }}">
 
                 <input 

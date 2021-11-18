@@ -3,9 +3,9 @@
   <footer class="footer bg-white relative pt-1 border-b-2 border-green-400">
     <div class="container mx-auto px-5">
 
-        <div class="sm:flex sm:mt-8">
+        <div class="sm:flex sm:mt-8 ">
             <div class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between">
-                <div class="flex flex-col whitespace-pre-wrap ">
+                <div class="flex flex-col  whitespace-pre-wrap ">
                     
                     <a href="{{ url('/') }}" class="flex  items-center   text-black-500 hover:text-gray-900">
                       <svg class="h-12 w-12 mr-1 mt-2 text-green-400" 
@@ -23,27 +23,27 @@ with our books.
                  
                 </div>
                 <div class="flex flex-col">
-                  <span class="font-bold  text-gray-700 uppercase pl-1 md:mt-0 mb-7 pt-3">Contact</span>
-                  <div class= "flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="px-1 font-bold ">Kosova,Prizren</span>
-                 
-                  </div>
-                  <div class="flex mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                    </svg>
-                    <span class="py-1 px-1 font-bold ">+383 49 555 555</span>
-                </div>
-                <div class="flex mt-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="py-1 px-1 font-bold ">support@company.com</span>
-              </div>
+                    <span class="font-bold  text-gray-700 uppercase pl-1 md:mt-0 mb-7 pt-3">Contact</span>
+                    <div class= "flex ">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="px-1 font-bold ">Kosova,Prizren</span>
                   
+                    </div>
+                    <div class="flex mt-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      <span class="py-1 px-1 font-bold ">+383 49 555 555</span>
+                  </div>
+                  <div class="flex mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="py-1 px-1 font-bold ">support@company.com</span>
+                </div>
+                    
                 </div>
                 <div class="flex flex-col">
                   <span class="font-bold  text-gray-700 uppercase pl-1 md:mt-0 mb-7 pt-3">Follow us</span>
@@ -74,14 +74,14 @@ with our books.
             </div>
         </div>
     </div>
-    <div class="container mx-auto px-6">
+     <div class="container mx-auto px-6 block">
         <div class="mt-16 border-t-2 border-green-400 flex flex-col items-center">
             <div class="sm:w-2/3 text-center py-6">
                 <p class="text-sm text-black-400 font-bold mb-2">
-                    © 2021 by Sara
+                   Copyright © 2021 - All right reserved
                 </p>
             </div>
         </div>
-    </div>
+    </div> 
 </footer>
  
