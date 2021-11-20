@@ -1,35 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="m-auto w-4/5 py-10">
+<div class="m-auto w-4/5 py-10 ">
         <div class="text-center">
             <h1 class="text-5xl uppercase bold">
                      BOOKS
             </h1>
         </div>
 
-     
-     
+
+
        @if (Auth::user() &&Auth::user()->role==1)
-       
+
        <div class="flex  justify-between pt-5 pb-10 sm:flex flex-wrap  ">
            <div class=" py-5">
-        <a 
-             href="books/create" 
+        <a
+             href="books/create"
             class="border-b-2 pb-2 text-lg font-bold normal-case border-dotted italic text-green-300 ">
             Add  a new book &rarr;
         </a>
            </div>
        <div class=" py-3">
             <form action="/admin/books" method="GET" class="">
-                
-        
+
+
                 <input
                     type="text"
                     name="search"
                     placeholder="Search..."
                     class="pl-4 pr-5 mr-3  py-3 border-green-300 border-2 leading-none rounded-md shadow-md focus:outline-none focus:border-transparent">
-                
+
                 <button
                     type="submit"
                     class="bg-green-400 hover:bg-green-300  uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-2xl active:bg-green-400">
@@ -39,39 +39,39 @@
        </div>
         </div>
         @foreach ($books as $book )
-               
-  
+
+
     <div class=" flex   max-w-md  bg-gray-100 rounded-md shadow-md overflow-hidden mb-7 mt-5  md:max-w-5xl ">
                 <a href="/admin/books/{{ $book->isbn}}" class="no-underline">
             <div class="md:flex  ">
                 <div class="md:flex-shrink-0   ">
                     <img class=" h-1/2 w-full object-contain md:h-full md:w-48" src="{{ asset('images/' . $book->image_path) }}" >
-                </div> 
+                </div>
                 <div class="p-8 flex-shrink w-64 h-30  ">
                     <div class="uuppercase tracking-wide text-m text-indigo-500 font-semibold">
                         Author:{{ $book->author }}
                     </div>
-                    <p class="block mt-1 text-lg leading-tight font-medium text-black ">    
+                    <p class="block mt-1 text-lg leading-tight font-medium text-black ">
                             Title: {{ $book ->title }}
                     </p>
-                                
+
                     <p class="text-lg text-gray-700 py-4">
                                         Pages: {{ $book->pages }}
                     </p>
                     </a>
-                    
+
                 </div>
 
 </div>
-            
+
         <div class="sm:grid  justify-items-end  w-1/2  grid  content-center  mx-auto mr-2 ">
             <div class="">
-            <a 
+            <a
              class="border-b-2   border-dotted italic text-green-500 mx-auto"
              href="books/{{ $book->isbn }}/edit">
                 Edit &rarr;
             </a>
-            
+
             </div>
             <div >
                 <form action="/admin/books/{{ $book ->isbn }}" class="pt-3" method="POST">
@@ -86,7 +86,7 @@
             </div>
 
         </div>
-      
+
     </div>
     @endforeach
            @endif

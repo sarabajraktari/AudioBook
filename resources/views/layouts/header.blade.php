@@ -1,116 +1,73 @@
 <!-- navbar goes here  -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
-<nav class="bg-white border-b-1 border-gray-200 ">
-  <div class="max-w-6xl mx-auto  ">
-    <div class="flex justify-between ">
+<div class="antialiased bg-gray-100 dark-mode:bg-gray-900 ">
+    <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+        <div x-data="{ open: true }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <!--logo-->
-            <div>
-              <a href="{{ url('/') }}" class="flex  items-center py-4  text-gray-500 hover:text-gray-900">
-                  <svg class="h-8 w-8 mr-1 text-green-400"
+            <div class="flex flex-row items-center justify-between p-4">
+              <a href="{{ url('/') }}" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+                  <svg class="h-8 w-8  ml-1 text-green-400"
                   xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
-                  <span class="font-bold">Audio Book</span>
-                  </a>
+                  <span class="font-bold flex">Audio Book</span>
+                </a>
+            <!--Burger button-->
+                <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                        <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
             </div>
+            <!--nav-->
+            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
 
-          <div class="flex space-x-1 ">
-                    <!-- primary nav -->
-              <div class=" hidden md:flex items-center space-x-1">
 
-                  <a href="{{ url('/') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('Home') }}</a>
-                  <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">About</a>
+
+                  <a href="{{ url('/') }}" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">{{ __('Home') }}</a>
+                  <a href="#" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">About</a>
 
                   @if((Auth::user() && Auth::user()->role==2))
-                  <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">My Books</a>
-                  <a href="/books" class="py-5 px-3 text-gray-700 hover:text-gray-900">Books</a>
+                  <a href="#" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">My Books</a>
+                  <a href="/books" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Books</a>
                   @endif
 
                   @if((Auth::user() &&Auth::user()->role==1))
-                  <a href="/user" class="py-5 px-3 text-gray-700 hover:text-gray-900">Users</a>
-                  <a href="/admin/books" class="py-5 px-3 text-gray-700 hover:text-gray-900">Books</a>
+                  <a href="/user" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Users</a>
+                  <a href="/admin/books" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Books</a>
                   @endif
-              </div>
+
               @guest
-                   <!-- secondary nav -->
-                 <div class=" hidden md:flex items-center space-x-1">
-                    <a class="py-5 px-3 text-gray-700 hover:text-gray-900" href="{{ route('login') }}">{{ __('Login') }}</a>
+
+
+                    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
-                        <a class="py-2 px-3 text-gray-700 bg-green-400 hover:bg-green-200 rounded transition duration-300" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                @else
-                    <p class=" hidden md:flex py-6 px-3 text-gray-700 hover:text-gray-900">{{ Auth::user()->name }}</p>
+                    <p class=" px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">{{ Auth::user()->name }}</p>
 
                      <a href="{{ route('logout') }}"
-                       class="hidden md:flex py-6 px-3 text-gray-700 hover:text-gray-900"
+                       class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                        onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         {{ csrf_field() }}
                     </form>
-                  </div>
+
               @endguest
 
 
-          </div>
 
-                   <!--Mobile buttons goes here-->
 
-        <div class="md:hidden  items-center flex justify-between inline-flex  px-3  ">
-          <button class="mobile-menu-button focus:outline-none  ">
-              <svg class="w-6 h-6 "
-               xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-          </button>
         </div>
-
-      </div>
-  </div>
-
-          <!-- mobile menu -->
-      <div class="mobile-menu hidden md:hidden text-center ">
-                <a href="{{ url('/') }}" class="block py-2 px-4 text-m hover:bg-gray-200">{{ __('Home') }}</a>
-                <a href="#" class="block py-2 px-4 text-m hover:bg-gray-200">About</a>
-               @if((Auth::user() &&Auth::user()->role==1))
-                <a href="/book" class="block py-2 px-4 text-m hover:bg-gray-200">Books</a>
-                <a href="/user" class="block py-2 px-4 text-m hover:bg-gray-200">Users</a>
-               @endif
-               @if((Auth::user() && Auth::user()->role==2))
-                 <a href="#" class="block py-2 px-4 text-m hover:bg-gray-200">My Books</a>
-               @endif
+    </div>
+            </nav>
+</div>
 
 
-          @guest
-              <a class="block py-2 px-4 text-m hover:bg-gray-200" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    @if (Route::has('register'))
-              <a class="block py-2 px-4 text-m bg-green-400 hover:bg-green-200 rounded transition duration-300" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
-              @else
 
-              <span class="block py-2 px-4 text-m hover:bg-gray-200">{{ Auth::user()->name }}</span>
-              <a href="{{ route('logout') }}"
-                  class=" block py-2 py-3 px-4 text-gray-700 hover:text-gray-900 hover:bg-gray-200"
-                  onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        {{ csrf_field() }}
-              </form>
-
-          @endguest
-
-      </div>
-
-    </nav>
-
-   <script>
-        //grab everything we need
-        const btn =document.querySelector('button.mobile-menu-button');
-        const menu =document.querySelector('.mobile-menu');
-        //add event liteners
-        btn.addEventListener('click', ()=>{
-          menu.classList.toggle('hidden');
-        });
-
-    </script>
