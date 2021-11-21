@@ -11,10 +11,13 @@
     <title> AudioBook</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-      <link href="{{ mix('css/app.css') }}" rel="stylesheet">
- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
  {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+
 </head>
 
 @extends('layouts.app')
@@ -197,11 +200,25 @@
                 </div>
             </div>
         </div>
+    </section>
+        <!--Carosuel for latest book-->
+        <div class="single-item">
+            <div>your content</div>
+            <div>your content</div>
+            <div>your content</div>
+          </div>
 
-</section>
-@endsection
+
+
+<script>
+    $(document).ready(function(){
+        $('.single-item').slick();
+    });
+
+  </script>
 
 
 
 </body>
 </html>
+@endsection
