@@ -1,5 +1,8 @@
 import StarRating from './components/StarRating';
 import 'slick-carousel/slick/slick';
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while

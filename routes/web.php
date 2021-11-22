@@ -5,6 +5,7 @@ use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 
 
 
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', [WelcomeController::class, 'index']);
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::resource('/book', bookController::class);
@@ -40,5 +42,3 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

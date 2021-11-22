@@ -11,8 +11,12 @@
     <title> AudioBook</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -200,25 +204,108 @@
                 </div>
             </div>
         </div>
-    </section>
+
         <!--Carosuel for latest book-->
-        <div class="single-item">
-            <div>your content</div>
-            <div>your content</div>
-            <div>your content</div>
-          </div>
+        <h2 class="text-2xl font-mono text-white pl-24 pt-7">LATESTS BOOKS</h2>
+        <div class="responsive " style="width:90% ; margin: 0 auto; padding: 30px;" >
+
+        @foreach ($latestBooks as $latestBook)
+
+        <div class="px-3">
+        {{-- <div class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200"> --}}
+             <div class="pl-11">
+                <img src="{{ asset('images/' . $latestBook->image_path) }}" class="h-56 w-40"/>
+
+            </div>
+            {{-- <a href="/admin/books/{{ $latestBook->isbn}}" class="no-underline"> --}}
+            <div class=" py-2 pl-11">
+                <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
+
+                        <span class="absolute inset-0"></span>
+                        {{ $latestBook->title }}
+
+                </h3>
+                <p class=" text-sm text-gray-500">
+                By:{{$latestBook->author}}</p>
+            </div>
+            {{-- </a> --}}
+        </div>
+        @endforeach
+
+        </div>
 
 
 
-<script>
-    $(document).ready(function(){
-        $('.single-item').slick();
-    });
+         <!--Carosuel for Most Popular Books-->
+         <h2 class="text-2xl font-mono text-white pl-24 pt-7">MOST POPULAR BOOKS</h2>
+         <div class="responsive " style="width:90% ; margin: 0 auto; padding: 30px;" >
 
-  </script>
+         @foreach ($mostPopularBooks as $mostPopularBook)
 
+         <div class="px-3">
+         {{-- <div class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200"> --}}
+              <div class="pl-11">
+                 <img src="{{ asset('images/' . $mostPopularBook->image_path) }}" class="h-56 w-40"/>
 
+             </div>
+             {{-- <a href="/admin/books/{{ $latestBook->isbn}}" class="no-underline"> --}}
+             <div class=" py-2 pl-11">
+                 <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
 
+                         <span class="absolute inset-0"></span>
+                         {{ $mostPopularBook->title }}
+
+                 </h3>
+                 <p class=" text-sm text-gray-500">
+                 By:{{$mostPopularBook->author}}</p>
+             </div>
+             {{-- </a> --}}
+         </div>
+         @endforeach
+
+         </div>
+
+    </section>
+ <script type="text/javascript">
+        $(document).ready(function(){
+        $('.responsive').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+            });
+
+                 });
+    </script>
 </body>
 </html>
 @endsection
