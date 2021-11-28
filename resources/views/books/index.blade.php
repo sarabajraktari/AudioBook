@@ -13,29 +13,33 @@
        @if (Auth::user() &&Auth::user()->role==1)
 
        <div class="flex  justify-between pt-5 pb-10 sm:flex flex-wrap  ">
-           <div class=" py-5">
-        <a
-             href="books/create"
-            class="border-b-2 pb-2 text-lg font-bold normal-case border-dotted italic text-green-300 ">
-            Add  a new book &rarr;
-        </a>
+           <div class=" py-8">
+
+                <form action="/admin/books" method="GET" class="">
+                  <div class="relative text-gray-600 focus-within:text-gray-400">
+                   <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                      <button
+                          type="submit"
+                          class="p-1 focus:outline-none focus:shadow-outline">
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                      </button>
+                   </span>
+                      <input
+                      type="text"
+                      name="search"
+                      placeholder="Search..."
+                      class="pl-4 pr-5 mr-3  py-3 border-black border-2 leading-none rounded-md shadow-md  bg-gray-100 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Search...">
+                </form>
+              </div>
            </div>
-       <div class=" py-3">
-            <form action="/admin/books" method="GET" class="">
 
+       <div class=" py-10">
+        <a
+        href="books/create"
+       class="border-b-2 px-20 text-lg font-bold normal-case border-dotted italic text-black ">
+       Add  a new book &rarr;
+        </a>
 
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search..."
-                    class="pl-4 pr-5 mr-3  py-3 border-green-300 border-2 leading-none rounded-md shadow-md focus:outline-none focus:border-transparent">
-
-                <button
-                    type="submit"
-                    class="bg-green-400 hover:bg-green-300  uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-2xl active:bg-green-400">
-                    Submit
-                </button>
-            </form>
        </div>
         </div>
         @foreach ($books as $book )
@@ -62,7 +66,7 @@
 
                 </div>
 
-</div>
+    </div>
 
         <div class="sm:grid  justify-items-end  w-1/2  grid  content-center  mx-auto mr-2 ">
             <div class="">
@@ -91,7 +95,7 @@
     @endforeach
            @endif
 
-           <div class="d-flex justify-content-center">
+           <div class="d-flex justify-content-center mb-10 mx-16">
             {!! $books->links() !!}
         </div>
 @endsection

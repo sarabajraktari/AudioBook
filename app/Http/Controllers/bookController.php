@@ -74,7 +74,7 @@ class bookController extends Controller
             'pages' => $request->input('pages'),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id,
-            'price' => $request->input('price'),
+            // 'price' => $request->input('price'),
 
 
         ]);
@@ -156,10 +156,8 @@ class bookController extends Controller
     }
 
 
-    //     public function search()
-    //     {
-    //         $search_text = $_GET['search'];
-    //         $books = book::where('title', 'LIKE', '%' . $search_text . '%')->get();
-    //         return view('books.search', compact('books'));
-    //     }
+    public function mybooks()
+    {
+        return view('books.myBooks');
+    }
 }

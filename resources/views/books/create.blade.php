@@ -4,7 +4,7 @@
 
 <div class="m-auto w-4/8 py-24">
     <div class="text-center">
-        <h1 class="text-5xl uppercase bold"> 
+        <h1 class="text-5xl uppercase bold">
             Create book
         </h1>
     </div>
@@ -14,39 +14,35 @@
     <form action="/admin/books" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="block">
-            <input 
+            <input
                 type="file"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="image">
-            <input 
+            <input
                 type="text"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="title"
                 placeholder="Book title...">
-            
-                <input 
+
+                <input
                 type="text"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="author"
                 placeholder="Author...">
 
-                <input 
+                <input
                 type="text"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="description"
                 placeholder="Description...">
 
-                <input 
+                <input
                 type="text"
                 class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                 name="pages"
                 placeholder="Pages...">
 
-                <input 
-                type="text"
-                class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
-                name="price"
-                placeholder="Price...">
+
 
                 <button type="submit" class="bg-green-500 block shadow-5xl mb-10 p-2 w-80 uppercase font-bold">
                     Submit

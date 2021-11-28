@@ -114,7 +114,7 @@
 
 <!--Statistic Card-->
 
-        <div class=" flex items-center bg-white">
+        <div class=" flex items-center bg-gray-100">
             <div class="w-full mx-auto py-6 sm:px-6 ">
                 <div class="flex flex-col lg:flex-row w-full lg:space-x-2 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
                     <div class="w-full lg:w-1/4">

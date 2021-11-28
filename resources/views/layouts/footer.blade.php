@@ -1,6 +1,6 @@
   <!-- Footer -->
   <script src="https://kit.fontawesome.com/b141eb9913.js" crossorigin="anonymous"></script>
-  <footer class="footer bg-white relative pt-1 border-b-2 border-green-400">
+  <footer class="footer bg-gray-100 relative pt-1 border-b-2 border-black">
     <div class="container mx-auto px-5">
 
         <div class="sm:flex sm:mt-8 ">
@@ -28,7 +28,7 @@ with our books.
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                       </svg>
-                      <span class="px-1 font-bold ">Kosova,Prizren</span>
+                      <span class="px-1 font-bold ">Prizren, Kosovo</span>
 
                     </div>
                     <div class="flex mt-2">
@@ -75,7 +75,7 @@ with our books.
         </div>
     </div>
      <div class="container mx-auto px-6 block">
-        <div class="mt-16 border-t-2 border-green-400 flex flex-col items-center">
+        <div class="mt-16 border-t-2 border-black flex flex-col items-center">
             <div class="sm:w-2/3 text-center py-6">
                 <p class="text-sm text-black-400 font-bold mb-2">
                    Copyright © 2021 - All right reserved

@@ -22,4 +22,9 @@ class BookController extends Controller
 
         ]);
     }
+
+    public function mybooks()
+    {
+        return view('books.myBooks');
+    }
 }

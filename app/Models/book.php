@@ -14,7 +14,7 @@ class book extends Model
     protected $primaryKey = 'isbn';
     protected $timestaps = true;
 
-    protected $fillable = ['title', 'author', 'pages', 'image_path', 'user_id', 'description', 'price'];
+    protected $fillable = ['title', 'author', 'pages', 'image_path', 'user_id', 'description'];
 
     public function users()
     {
