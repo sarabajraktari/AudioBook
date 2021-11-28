@@ -72,9 +72,9 @@
           </div>
           <div class="flex">
             {{-- <span class="title-font font-medium text-2xl text-gray-900">${{ $book->price }}.00</span> --}}
-            <a href="#">
+
             <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wish list</button>
-            </a>
+
           </div>
           <div class="shadow overflow-hidden rounded border-b border-gray-200 mt-10 ">
             <table class="min-w-full bg-white ">
