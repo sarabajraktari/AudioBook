@@ -8,6 +8,7 @@ use App\Rules\Uppercase;
 use App\Models\User;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
 use App\Models\Wishlist;
+use App\Models\BookChapter;
 
 class bookController extends Controller
 {
