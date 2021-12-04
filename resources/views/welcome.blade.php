@@ -125,7 +125,7 @@
                                         Customers
                                     </div>
                                     <div class="text-xl font-bold">
-                                        23
+                                        {{ $countCostumer }}
                                     </div>
                                 </div>
                                 <svg class="stroke-current text-gray-700" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +189,7 @@
                                         Watch Time
                                     </div>
                                     <div class="text-xl font-bold">
-                                        31h 2m
+                                        {{  $sumTime }}
                                     </div>
                                 </div>
                                 <svg class="stroke-current text-gray-500" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -207,32 +207,28 @@
 
         <!--Carosuel for latest book-->
         <h2 class="text-2xl font-mono text-white pl-24 pt-7">LATESTS BOOKS</h2>
-        <div class="responsive " style="width:90% ; margin: 0 auto; padding: 30px;" >
+    <div class="responsive " style="width:90% ; margin: 0 auto; padding: 30px;" >
 
         @foreach ($latestBooks as $latestBook)
 
         <div class="px-3">
-        {{-- <div class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200"> --}}
-             <div class="pl-11">
-                <img src="{{ asset('images/' . $latestBook->image_path) }}" class="h-56 w-40"/>
+          <a href="/admin/books/{{ $latestBook->isbn}}" class="no-underline">
+                <div class="pl-11">
+                    <img src="{{ asset('images/' . $latestBook->image_path) }}" class="h-56 w-40"/>
+                </div>
 
-            </div>
-            {{-- <a href="/admin/books/{{ $latestBook->isbn}}" class="no-underline"> --}}
-            <div class=" py-2 pl-11">
-                <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
-
-                        <span class="absolute inset-0"></span>
-                        {{ $latestBook->title }}
-
-                </h3>
-                <p class=" text-sm text-gray-500">
-                By:{{$latestBook->author}}</p>
-            </div>
-            {{-- </a> --}}
+                <div class=" py-2 pl-11">
+                    <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
+                            {{ $latestBook->title }}
+                    </h3>
+                    <p class=" text-sm text-gray-500">
+                    By:{{$latestBook->author}}</p>
+                </div>
+           </a>
         </div>
         @endforeach
 
-        </div>
+    </div>
 
 
 
@@ -240,32 +236,31 @@
          <h2 class="text-2xl font-mono text-white pl-24 pt-7">MOST POPULAR BOOKS</h2>
          <div class="responsive " style="width:90% ; margin: 0 auto; padding: 30px;" >
 
-         @foreach ($mostPopularBooks as $mostPopularBook)
+            @foreach ($mostPopularBooks as $mostPopularBook)
 
-         <div class="px-3">
-         {{-- <div class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200"> --}}
-              <div class="pl-11">
-                 <img src="{{ asset('images/' . $mostPopularBook->image_path) }}" class="h-56 w-40"/>
+                <div class="px-3">
 
-             </div>
-             {{-- <a href="/admin/books/{{ $latestBook->isbn}}" class="no-underline"> --}}
-             <div class=" py-2 pl-11">
-                 <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
+                    <a href="/admin/books/{{ $mostPopularBook->isbn}}" class="no-underline">
+                    <div class="pl-11">
+                        <img src="{{ asset('images/' . $mostPopularBook->image_path) }}" class="h-56 w-40"/>
+                    </div>
 
-                         <span class="absolute inset-0"></span>
-                         {{ $mostPopularBook->title }}
 
-                 </h3>
-                 <p class=" text-sm text-gray-500">
-                 By:{{$mostPopularBook->author}}</p>
-             </div>
-             {{-- </a> --}}
-         </div>
-         @endforeach
+                    <div class=" py-2 pl-11">
+                        <h3 class="text-base font-semibold text-white group-hover:text-indigo-600 pb-2">
+                            {{ $mostPopularBook->title }}
+                        </h3>
+                        <p class=" text-sm text-gray-500">
+                        By:{{$mostPopularBook->author}}
+                        </p>
+                    </div>
+                    </a>
+                </div>
+            @endforeach
 
-         </div>
+    </div>
 
-    </section>
+</section>
  <script type="text/javascript">
         $(document).ready(function(){
         $('.responsive').slick({

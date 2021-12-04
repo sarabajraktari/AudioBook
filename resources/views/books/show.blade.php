@@ -72,22 +72,26 @@
           </div>
           <div class="flex">
             {{-- <span class="title-font font-medium text-2xl text-gray-900">${{ $book->price }}.00</span> --}}
-
+            <a href="#" class="update_wishlist" data-bookid="{{ $book->isbn }}">
             <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wish list</button>
-
+            <i class="fas fa-heart fa-3x"></i>
+            </a>
           </div>
           <div class="shadow overflow-hidden rounded border-b border-gray-200 mt-10 ">
             <table class="min-w-full bg-white ">
                 <thead class="bg-gray-800 text-white">
                 <tr >
                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
-                            Chapters
+                            Chapter Name
                     </th>
                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
-                            Duration
+                            Reader
                     </th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
-                        Voice
+                        Time
+                    </th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+                        Audio
                     </th>
 
                 </tr>
@@ -99,6 +103,18 @@
                         <td class="w-1/3 text-left py-3 px-4">
                                 {{ $bookChapter->chapter_name }}
                         </td>
+                        <td class="w-1/3 text-left py-3 px-4">
+                            {{ $bookChapter->reader }}
+                    </td>
+                    <td class="w-1/3 text-left py-3 px-4">
+                        {{ $bookChapter->time }}
+                </td>
+                <td class="w-1/3 text-left py-3 px-4">
+
+                    <audio controls
+                     src="{{ asset('audio/' . $bookChapter->audio_path) }}" type="audio/mp3">
+                    </audio>
+            </td>
 
                     </tr>
 
@@ -134,3 +150,48 @@
 
   </section>
 @endsection
+
+@push('javascript')
+    <script>
+        var user_id="{{ Auth::id() }}";
+
+        $(document).ready(function(){
+            $('.update_wishlist').click(function () {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var book_id=$(this).data('bookid');
+            $.ajax({
+                    type:'POST',
+                    url:'/update_wishlist',
+                    data:{
+                        book_id:book_id,
+                        user_id:user_id
+                    },
+                    success:function(response){
+                       if(response.action == 'add'){
+                        $('#notifDiv').fadeIn();
+                        $('#notifDiv').css('background', 'green');
+                        $('#notifDiv').text(response.message);
+                        setTimeout(() => {
+                            $('#notifDiv').fadeOut();
+                        }, 3000);
+                       }
+                       else if(response.action=='remove'){
+                        $('#notifDiv').fadeIn();
+                        $('#notifDiv').css('background', 'red');
+                        $('#notifDiv').text(response.message);
+                        setTimeout(() => {
+                            $('#notifDiv').fadeOut();
+                        }, 3000);
+                       }
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

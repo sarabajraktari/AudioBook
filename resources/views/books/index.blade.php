@@ -89,6 +89,15 @@
                 </form>
             </div>
 
+                <div class="mt-2">
+                <a
+                 class="border-b-2   border-dotted italic text-green-500 mx-auto"
+                 href="books/{{ $book->isbn }}/chapter">
+                    Addd Chapter &rarr;
+                </a>
+
+                </div>
+
         </div>
 
     </div>

@@ -31,6 +31,11 @@ Route::get('/about', [AboutController::class, 'index']);
 //     Route::resource('/book', bookController::class);
 // });
 Route::resource('/admin/books', bookController::class);
+Route::get('/admin/books/{id}/chapter', [bookController::class, 'bookChapter']);
+Route::post('/admin/books/{id}/chapter', [bookController::class, 'AddbookChapter']);
+
+Route::post('/update_wishlist', [bookController::class, 'updateWishlist']);
+
 Route::get('/books', [UserBookController::class, 'index']);
 Route::get('/mybooks', [UserBookController::class, 'mybooks']);
 

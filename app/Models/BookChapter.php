@@ -13,7 +13,7 @@ class BookChapter extends Model
     protected $table = 'book_chapter';
 
     protected $primaryKey = 'id';
-    protected $fillable = ['chapter_name', 'reader', 'time'];
+    protected $fillable = ['book_isbn', 'chapter_name', 'reader', 'time', 'audio_path'];
 
     //A car model belongs to a car
     public function book()

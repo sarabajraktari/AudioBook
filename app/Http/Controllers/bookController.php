@@ -9,6 +9,7 @@ use App\Models\User;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
 use App\Models\Wishlist;
 use App\Models\BookChapter;
+use Illuminate\Support\Facades\Auth;
 
 class bookController extends Controller
 {
@@ -52,9 +53,6 @@ class bookController extends Controller
      */
     public function store(Request $request)
     {
-        //     $request->image->extension();
-
-        // $request->image->move(public_path('images'), $newImageName);
         $request->validate([
             'title' => 'required',
             'author' => 'required|string',
@@ -64,10 +62,11 @@ class bookController extends Controller
 
         ]);
 
-        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $newImageName);
+
         //if it's valid ,it will proceed
 
+        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $newImageName);
 
         $book = book::create([
             'title' => $request->input('title'),
@@ -75,10 +74,7 @@ class bookController extends Controller
             'description' => $request->input('description'),
             'pages' => $request->input('pages'),
             'image_path' => $newImageName,
-            'user_id' => auth()->user()->id,
-            // 'price' => $request->input('price'),
-
-
+            'user_id' => auth()->user()->id
         ]);
 
         return redirect('/admin/books'); //kur klikohet buttoni me orientu ne faqen book
@@ -161,5 +157,63 @@ class bookController extends Controller
     public function mybooks()
     {
         return view('books.myBooks');
+    }
+    public function bookChapter($isbn)
+    {
+        $book = book::find($isbn);
+
+        return view('books.chapters')->with('book', $book);
+    }
+    public function AddbookChapter(Request $request, $isbn)
+    {
+
+
+        $data = $request->all();
+
+        // dd($request->audio_path);
+
+        if (count($request->chapter_name) > 0) {
+            foreach ($request->chapter_name as $item => $v) {
+                $newAudioName = time() . '-' . '.' . $request->audio_path[$item]->extension();
+                $request->audio_path[$item]->move(public_path('audio'), $newAudioName);
+                $data2 = array(
+                    'book_isbn' =>  $isbn,
+                    'chapter_name' => $request->chapter_name[$item],
+                    'reader' => $request->reader[$item],
+                    'time' => $request->time[$item],
+                    'audio_path' =>  $newAudioName,
+
+                );
+                BookChapter::insert($data2);
+            }
+        }
+
+        return redirect()->back()->with('success', 'data insert successfully');
+    }
+
+    public function updateWishlist(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $countWishlist = Wishlist::countWishlist($data['book_id']);
+
+            $wishlist = new Wishlist;
+
+            if ($countWishlist == 0) {
+                $wishlist->book_id = $data['book_id'];
+                $wishlist->user_id = $data['user_id'];
+                $wishlist->save();
+
+                return response()->json(['action' => 'add', 'message' =>
+                'Book Added Successfully to Wishlist']);
+            } else {
+                Wishlist::where(['user_id' => Auth::user()->id, 'book_id' =>
+                $data['book_id']])->delete();
+
+
+                return response()->json(['action' => 'remove', 'message' =>
+                'Book Removed  Successfully from Wishlist']);
+            }
+        }
     }
 }
