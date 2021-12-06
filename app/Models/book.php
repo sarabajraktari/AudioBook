@@ -24,4 +24,8 @@ class book extends Model
     {
         return $this->hasMany(BookChapter::class);
     }
+    public function wishlist()
+    {
+        return $this->belongsToMany(Wishlist::class);
+    }
 }

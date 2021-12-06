@@ -154,10 +154,16 @@ class bookController extends Controller
     }
 
 
-    public function mybooks()
-    {
-        return view('books.myBooks');
-    }
+    // public function mybooks()
+    // {
+
+    //     $books_user = Wishlist::all();
+
+    //     return view(
+    //         'user.myBooks',
+    //         ['books_user' => $books_user]
+    //     );
+    // }
     public function bookChapter($isbn)
     {
         $book = book::find($isbn);

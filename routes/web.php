@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AboutController;
-
+use App\Http\Controllers\mybooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +35,11 @@ Route::get('/admin/books/{id}/chapter', [bookController::class, 'bookChapter']);
 Route::post('/admin/books/{id}/chapter', [bookController::class, 'AddbookChapter']);
 
 Route::post('/update_wishlist', [bookController::class, 'updateWishlist']);
+Route::post('/remove-from-wishlist', [UserBookController::class, 'removeWishlist']);
 
 Route::get('/books', [UserBookController::class, 'index']);
 Route::get('/mybooks', [UserBookController::class, 'mybooks']);
+
 
 
 Route::resource('/user', userController::class);

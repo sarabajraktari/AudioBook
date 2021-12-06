@@ -5,6 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\book;
+use App\Models\User;
+use App\Models\Wishlist;
+use Error;
+use Faker\Calculator\Isbn;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -23,8 +28,24 @@ class BookController extends Controller
         ]);
     }
 
+
     public function mybooks()
     {
-        return view('books.myBooks');
+        $wishlist = Wishlist::where('user_id', Auth::id())->get();
+        return view('books.myBooks', compact('wishlist'));
+    }
+
+    public function removeWishlist(Request $request)
+    {
+        $wishlist_id = $request->wishlist_id;
+
+        if (Wishlist::where('user_id', Auth::id())->where('id', $wishlist_id)->exists()) {
+            $wishlist = Wishlist::where('user_id', Auth::id())->where('id', $wishlist_id);
+            $wishlist->delete();
+            return response()->json(['status' => 'Item Removed from Wishlist']);
+        } else {
+
+            return response()->json(['status' => 'No Items Found in Wishlist']);
+        }
     }
 }

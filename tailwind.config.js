@@ -1,4 +1,5 @@
 module.exports = {
+
   purge: [
     './resources/views/**/*.blade.php',
     './resources/css/**/*.css',
@@ -7,21 +8,17 @@ module.exports = {
     extend: {}
   },
   theme: {
-    screens: {
-      'tablet': '640px',
-      // => @media (min-width: 640px) { ... }
 
-      'laptop': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
-      'desktop': '1280px',
-      // => @media (min-width: 1280px) { ... }
-    },
   },
-  variants: {},
+  variants: {
+     scrollbar: ['dark'],
+     scrollbar: ['rounded'],
+
+  },
   plugins: [
-    // require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio')
+
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwind-scrollbar'),
   ]
 
 }

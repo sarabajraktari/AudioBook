@@ -15,11 +15,24 @@ class CreateWishlistsTable extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('book_id');
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->unsignedInteger('book_id')->unsigned();
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('book_id')
+                ->references('isbn')
+                ->on('books')
+                ->onDelete('cascade');
         });
     }
+
+
+
+
 
     /**
      * Reverse the migrations.

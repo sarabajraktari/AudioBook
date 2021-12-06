@@ -27,7 +27,7 @@
         <header>
             @include('layouts.header')
         </header>
-        <div id="notifDiv"></div>
+
         @yield('content')
         <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

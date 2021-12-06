@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <section class="text-gray-700 body-font overflow-hidden bg-white">
     <div class="container px-5 py-20 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap ">
-
         <img  class="lg:w-1/2 w-full  object-contain object-center rounded border border-gray-200" src="{{ asset('images/' . $book->image_path) }}">
-
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $book->author }}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->title }}</h1>
@@ -27,8 +26,8 @@
                 <li>
                   <i class="far fa-star fa-sm text-yellow-500 mr-1"></i>
                 </li>
-              </ul>
-            </span>
+            </ul>
+
             <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
               <a class="text-gray-500">
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -48,35 +47,38 @@
             </span>
           </div>
           <p class="leading-relaxed">{{ $book->description }}</p>
+            <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+              <div class="flex">
+                <span class="mr-3">Pages: {{ $book->pages }}</span>
 
-
-
-
-          <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-            <div class="flex">
-              <span class="mr-3">Pages: {{ $book->pages }}</span>
-
-            </div>
+              </div>
 
             <div class="flex ml-6 items-center">
 
               <div class="relative">
-
-                {{-- <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center"> --}}
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
-
-                  </svg>
-                </span>
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                </svg>
               </div>
             </div>
-          </div>
+           </div>
           <div class="flex">
-            {{-- <span class="title-font font-medium text-2xl text-gray-900">${{ $book->price }}.00</span> --}}
+              @php $countWishlist=0 @endphp
+              @if(Auth::check())
+                @php
+                    $countWishlist=App\Models\Wishlist ::countWishlist($book['book_id'])
+                @endphp
+              @endif
             <a href="#" class="update_wishlist" data-bookid="{{ $book->isbn }}">
-            <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wish list</button>
-            <i class="fas fa-heart fa-3x"></i>
+            @if ($countWishlist > 0)
+
+
+                <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Added</button>
+            @else
+                 <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wishlist</button>
+            @endif
             </a>
           </div>
+          <div id="notifDiv" class="rounded mt-3 text-black text-center opacity-90 py-2"></div>
           <div class="shadow overflow-hidden rounded border-b border-gray-200 mt-10 ">
             <table class="min-w-full bg-white ">
                 <thead class="bg-gray-800 text-white">
@@ -95,7 +97,7 @@
                     </th>
 
                 </tr>
-            </thead>
+                </thead>
 
                 @forelse ($book->bookChapter as $bookChapter)
                 <tbody class="text-gray-700">
@@ -105,16 +107,16 @@
                         </td>
                         <td class="w-1/3 text-left py-3 px-4">
                             {{ $bookChapter->reader }}
-                    </td>
-                    <td class="w-1/3 text-left py-3 px-4">
-                        {{ $bookChapter->time }}
-                </td>
-                <td class="w-1/3 text-left py-3 px-4">
+                        </td>
+                        <td class="w-1/3 text-left py-3 px-4">
+                                {{ $bookChapter->time }}
+                        </td>
+                        <td class="w-1/3 text-left py-3 px-4">
 
-                    <audio controls
-                     src="{{ asset('audio/' . $bookChapter->audio_path) }}" type="audio/mp3">
-                    </audio>
-            </td>
+                        <audio controls
+                        src="{{ asset('audio/' . $bookChapter->audio_path) }}" type="audio/mp3">
+                        </audio>
+                        </td>
 
                     </tr>
 
@@ -124,7 +126,7 @@
                         <td>
                 @endforelse
                 </tbody>
-                </table>
+              </table>
         </div>
 
 
@@ -142,11 +144,10 @@
             {{-- <hr class="mt-4 mb-8" > --}}
 
 
-</div>
-      </div>
-
       </div>
     </div>
+
+
 
   </section>
 @endsection
@@ -174,6 +175,9 @@
                     },
                     success:function(response){
                        if(response.action == 'add'){
+                           $('a[data-bookid='+book_id+']').html(
+                            '<button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Added</button>'
+                           );
                         $('#notifDiv').fadeIn();
                         $('#notifDiv').css('background', 'green');
                         $('#notifDiv').text(response.message);
@@ -182,6 +186,9 @@
                         }, 3000);
                        }
                        else if(response.action=='remove'){
+                        $('a[data-bookid='+book_id+']').html(
+                            '<button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wishlist</button>'
+                           );
                         $('#notifDiv').fadeIn();
                         $('#notifDiv').css('background', 'red');
                         $('#notifDiv').text(response.message);
