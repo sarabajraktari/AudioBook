@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\book;
+use App\Models\BookUser;
+use App\Models\ListBook;
 use App\Models\User;
 use App\Models\Wishlist;
 use Error;
@@ -31,8 +33,11 @@ class BookController extends Controller
 
     public function mybooks()
     {
+        $mybookList = ListBook::where('user_id', Auth::id())->get();
         $wishlist = Wishlist::where('user_id', Auth::id())->get();
-        return view('books.myBooks', compact('wishlist'));
+        // $bookChapter = Wishlist::where('book_id');
+
+        return view('books.myBooks', compact('wishlist', 'mybookList'));
     }
 
     public function removeWishlist(Request $request)
@@ -46,6 +51,38 @@ class BookController extends Controller
         } else {
 
             return response()->json(['status' => 'No Items Found in Wishlist']);
+        }
+    }
+
+    public function showBook($id)
+    {
+        $book = book::find($id);
+        return view('books.book')->with('book', $book);
+    }
+
+    public function addBookList(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $countBookList = ListBook::countBookList($data['book_id']);
+
+            $listbook = new ListBook;
+
+            if ($countBookList == 0) {
+                $listbook->book_id = $data['book_id'];
+                $listbook->user_id = $data['user_id'];
+                $listbook->save();
+
+                return response()->json(['action' => 'add', 'message' =>
+                'Book Added Successfully to Wishlist']);
+            } else {
+                ListBook::where(['user_id' => Auth::user()->id, 'book_id' =>
+                $data['book_id']])->delete();
+
+
+                return response()->json(['action' => 'remove', 'message' =>
+                'Book Removed  Successfully from Wishlist']);
+            }
         }
     }
 }

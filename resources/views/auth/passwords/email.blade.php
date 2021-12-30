@@ -6,7 +6,7 @@
         <div class="w-full">
 
             @if (session('status'))
-            <div class="text-sm text-green-700 bg-green-100 px-5 py-6 sm:rounded sm:border sm:border-green-400 sm:mb-6"
+            <div class="text-sm text-green-700 bg-green-100 px-5 py-6 sm:rounded sm:border sm:border-green-400 sm:mb-6 "
                 role="alert">
                 {{ session('status') }}
             </div>
@@ -26,7 +26,7 @@
                         </label>
 
                         <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                            class="form-input w-full input border border-gray-400 appearance-none rounded w-full px-3 py-3  pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600 @error('email') border-red-500 @enderror" name="email"
                             value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
@@ -52,5 +52,6 @@
             </section>
         </div>
     </div>
+    <br><br>
 </main>
 @endsection

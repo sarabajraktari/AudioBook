@@ -5,7 +5,7 @@
 <section class="text-gray-700 body-font overflow-hidden bg-white">
     <div class="container px-5 py-20 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap ">
-        <img  class="lg:w-1/2 w-full  object-contain object-center rounded border border-gray-200" src="{{ asset('images/' . $book->image_path) }}">
+        <img  class="lg:w-1/2   object-contain object-center rounded border border-gray-200" src="{{ asset('images/' . $book->image_path) }}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $book->author }}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->title }}</h1>
@@ -68,6 +68,7 @@
                     $countWishlist=App\Models\Wishlist ::countWishlist($book['book_id'])
                 @endphp
               @endif
+              @if(Auth::check())
             <a href="#" class="update_wishlist" data-bookid="{{ $book->isbn }}">
             @if ($countWishlist > 0)
 
@@ -77,8 +78,11 @@
                  <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add wishlist</button>
             @endif
             </a>
+            @endif
           </div>
           <div id="notifDiv" class="rounded mt-3 text-black text-center opacity-90 py-2"></div>
+
+       @if (Auth::user() &&Auth::user()->role==1)
           <div class="shadow overflow-hidden rounded border-b border-gray-200 mt-10 ">
             <table class="min-w-full bg-white ">
                 <thead class="bg-gray-800 text-white">
@@ -128,7 +132,7 @@
                 </tbody>
               </table>
         </div>
-
+        @endif
 
             {{-- <p class="text-left">
                 Product types:

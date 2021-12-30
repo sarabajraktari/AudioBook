@@ -36,9 +36,12 @@ Route::post('/admin/books/{id}/chapter', [bookController::class, 'AddbookChapter
 
 Route::post('/update_wishlist', [bookController::class, 'updateWishlist']);
 Route::post('/remove-from-wishlist', [UserBookController::class, 'removeWishlist']);
+Route::post('/add_book_list', [UserBookController::class, 'addBookList']);
+
 
 Route::get('/books', [UserBookController::class, 'index']);
 Route::get('/mybooks', [UserBookController::class, 'mybooks']);
+Route::get('/mybooks/{id}', [UserBookController::class, 'showBook']);
 
 
 

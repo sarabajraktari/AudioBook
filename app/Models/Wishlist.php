@@ -29,12 +29,8 @@ class Wishlist extends Model
     {
         return $this->belongsTo(book::class, 'book_id', 'isbn');
     }
-    // public function books()
-    // {
-    //     return $this->belongsMany(book::class);
-    // }
-    // public function users()
-    // {
-    //     return $this->belongsMany(User::class);
-    // }
+    public function bookChapter()
+    {
+        return $this->hasMany(BookChapter::class, 'book_id', 'isbn');
+    }
 }

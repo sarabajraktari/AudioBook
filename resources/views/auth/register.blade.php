@@ -19,7 +19,7 @@
                             {{ __('Name') }}:
                         </label>
 
-                        <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
+                        <input id="name" type="text" class="form-input w-full input border border-gray-400 appearance-none rounded w-full px-3 py-3  pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600  @error('name')  border-red-500 @enderror"
                             name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
@@ -35,7 +35,7 @@
                         </label>
 
                         <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                            class="form-input w-full input border border-gray-400 appearance-none rounded w-full px-3 py-3  pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600  @error('email') border-red-500 @enderror" name="email"
                             value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
@@ -51,7 +51,7 @@
                         </label>
 
                         <input id="password" type="password"
-                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
+                            class="form-input w-full input border border-gray-400 appearance-none rounded w-full px-3 py-3  pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600  @error('password') border-red-500 @enderror" name="password"
                             required autocomplete="new-password">
 
                         @error('password')
@@ -66,7 +66,7 @@
                             {{ __('Confirm Password') }}:
                         </label>
 
-                        <input id="password-confirm" type="password" class="form-input w-full"
+                        <input id="password-confirm" type="password" class="form-input w-full input border border-gray-400 appearance-none rounded w-full px-3 py-3  pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600 "
                             name="password_confirmation" required autocomplete="new-password">
                     </div>
 
